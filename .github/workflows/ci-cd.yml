@@ -169,7 +169,11 @@ jobs:
     name: Push Docker Image
     runs-on: ubuntu-latest
     needs: security-scan
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    if: |
+      github.event_name == 'push' && 
+      (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop') &&
+      secrets.DOCKERHUB_USERNAME != '' && 
+      secrets.DOCKERHUB_TOKEN != ''
     
     steps:
       - name: Checkout code
