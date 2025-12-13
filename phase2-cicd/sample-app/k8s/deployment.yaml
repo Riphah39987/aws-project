@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
       - name: devops-sample-app
-        image: ghcr.io/YOUR_USERNAME/devops-sample-app:latest
-        imagePullPolicy: Always
+        image: devops-sample-app:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 3000
           name: http
@@ -52,8 +52,6 @@ spec:
           periodSeconds: 5
           timeoutSeconds: 3
           failureThreshold: 3
-      imagePullSecrets:
-      - name: ghcr-secret
 ---
 apiVersion: v1
 kind: Service
